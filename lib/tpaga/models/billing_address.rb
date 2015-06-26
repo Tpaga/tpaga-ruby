@@ -1,7 +1,7 @@
 module Tpaga
   # 
-  class Address < BaseObject
-    attr_accessor :address_line1, :address_line2, :postal_code, :city
+  class BillingAddress < BaseObject
+    attr_accessor :address_line1, :address_line2, :city, :state, :postal_code, :country
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -13,10 +13,16 @@ module Tpaga
         :'address_line2' => :'addressLine2',
         
         # 
+        :'city' => :'city',
+        
+        # 
+        :'state' => :'state',
+        
+        # 
         :'postal_code' => :'postalCode',
         
         # 
-        :'city' => :'city'
+        :'country' => :'country'
         
       }
     end
@@ -26,8 +32,10 @@ module Tpaga
       {
         :'address_line1' => :'string',
         :'address_line2' => :'string',
+        :'city' => :'string',
+        :'state' => :'string',
         :'postal_code' => :'string',
-        :'city' => :'City'
+        :'country' => :'string'
         
       }
     end
@@ -47,12 +55,20 @@ module Tpaga
         @address_line2 = attributes[:'addressLine2']
       end
       
+      if attributes[:'city']
+        @city = attributes[:'city']
+      end
+      
+      if attributes[:'state']
+        @state = attributes[:'state']
+      end
+      
       if attributes[:'postalCode']
         @postal_code = attributes[:'postalCode']
       end
       
-      if attributes[:'city']
-        @city = attributes[:'city']
+      if attributes[:'country']
+        @country = attributes[:'country']
       end
       
     end
