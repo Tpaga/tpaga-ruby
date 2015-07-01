@@ -20,9 +20,7 @@ module Tpaga
 
       # Account for error messages that take different forms...
       def error_message
-        body['message']
-      rescue
-        body
+        {status: self.code, body: body}.to_json
       end
 
       # If body is JSON, parse it
