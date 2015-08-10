@@ -4,7 +4,7 @@ require "tpaga/swagger/version"
 
 Gem::Specification.new do |s|
   s.name        = "tpaga"
-  s.date        = "2015-06-26"
+  s.date        = "2015-08-11"
   s.version     = Tpaga::Swagger::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors       = ["Sebastian Ortiz V."]
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
 [Learn about TPaga](https://tpaga.co)
 
-[More information about this library] (http://docs.tpaga.co)
+[More information about this library] (http://tpaga.co/docs)
 }
   s.add_runtime_dependency 'typhoeus', '~> 0.2', '>= 0.2.1'
   s.add_runtime_dependency 'addressable', '~> 2.2', '>= 2.2.4'
