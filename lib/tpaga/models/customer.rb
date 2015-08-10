@@ -1,79 +1,84 @@
-require 'date'
-
 module Tpaga
-class Customer
-  attr_accessor :address, :email, :firstName, :gender, :id, :lastName, :phone
+  # 
+  class Customer < BaseObject
+    attr_accessor :id, :first_name, :last_name, :email, :gender, :phone, :address
+    # attribute mapping from ruby-style variable name to JSON key
+    def self.attribute_map
+      {
+        
+        # 
+        :'id' => :'id',
+        
+        # 
+        :'first_name' => :'firstName',
+        
+        # 
+        :'last_name' => :'lastName',
+        
+        # 
+        :'email' => :'email',
+        
+        # 
+        :'gender' => :'gender',
+        
+        # 
+        :'phone' => :'phone',
+        
+        # 
+        :'address' => :'address'
+        
+      }
+    end
 
-  # :internal => :external
-  def self.attribute_map
-    {
-      :address => :'address',
-      :email => :'email',
-      :firstName => :'firstName',
-      :gender => :'gender',
-      :id => :'id',
-      :lastName => :'lastName',
-      :phone => :'phone'
+    # attribute type
+    def self.swagger_types
+      {
+        :'id' => :'string',
+        :'first_name' => :'string',
+        :'last_name' => :'string',
+        :'email' => :'string',
+        :'gender' => :'string',
+        :'phone' => :'string',
+        :'address' => :'Address'
+        
+      }
+    end
 
-    }
-  end
+    def initialize(attributes = {})
+      return if !attributes.is_a?(Hash) || attributes.empty?
 
-  def initialize(attributes = {})
-    return if attributes.empty?
+      # convert string to symbol for hash key
+      attributes = attributes.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
-    # convert hash key from symbol to string
-    # and convert object to hash
-    attributes = attributes.inject({}){|memo,(k,v)| memo[k.to_s] = Swagger.to_body(v); memo}
-    
-    # Morph attribute keys into undescored rubyish style
-    if self.class.attribute_map[:"address"]
-      @address = Address.new(attributes["address"]) if (attributes["address"].kind_of? Hash)
+      
+      if attributes[:'id']
+        @id = attributes[:'id']
       end
-    if self.class.attribute_map[:"email"]
-      @email = attributes["email"]
+      
+      if attributes[:'firstName']
+        @first_name = attributes[:'firstName']
       end
-    if self.class.attribute_map[:"firstName"]
-      @firstName = attributes["firstName"]
+      
+      if attributes[:'lastName']
+        @last_name = attributes[:'lastName']
       end
-    if self.class.attribute_map[:"gender"]
-      @gender = attributes["gender"]
+      
+      if attributes[:'email']
+        @email = attributes[:'email']
       end
-    if self.class.attribute_map[:"id"]
-      @id = attributes["id"]
+      
+      if attributes[:'gender']
+        @gender = attributes[:'gender']
       end
-    if self.class.attribute_map[:"lastName"]
-      @lastName = attributes["lastName"]
+      
+      if attributes[:'phone']
+        @phone = attributes[:'phone']
       end
-    if self.class.attribute_map[:"phone"]
-      @phone = attributes["phone"]
-      end
-    
-
-  end
-
-  def to_body
-    body = {}
-    self.class.attribute_map.each_pair do |key, value|
-      next if self.send(key).nil?
-
-      if self.send(key).respond_to? :to_body
-        body[value] = self.send(key).to_body
-      elsif self.send(key).kind_of?(Array)
-        body[value] = []
-        self.send(key).each do |arr|
-           if arr.respond_to? :to_body
-               body[value] << arr.to_body
-           else
-               body[value] << arr
-           end
-        end
-      else
-        body[value] = self.send(key)
+      
+      if attributes[:'address']
+        @address = attributes[:'address']
       end
       
     end
-    body
   end
 end
-end
-

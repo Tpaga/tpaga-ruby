@@ -1,99 +1,76 @@
 require 'logger'
+require 'json'
 
 module Tpaga
-module Swagger
-    
-  class << self
-    attr_accessor :logger
-    
-    # A Swagger configuration object. Must act like a hash and return sensible
-    # values for all Swagger configuration options. See Swagger::Configuration.
-    attr_accessor :configuration
+  module Swagger
+    class << self
+      attr_accessor :logger
 
-    attr_accessor :resources
-    
-    # Call this method to modify defaults in your initializers.
-    #
-    # @example
-    #   Swagger.configure do |config|
-    #     config.api_key = '1234567890abcdef'     # required
-    #     config.username = 'wordlover'           # optional, but needed for user-related functions
-    #     config.password = 'i<3words'            # optional, but needed for user-related functions
-    #     config.format = 'json'                  # optional, defaults to 'json'
-    #   end
-    #
-    def configure
-      self.configuration ||= Configuration.new
-      yield(configuration) if block_given?
+      # A Swagger configuration object. Must act like a hash and return sensible
+      # values for all Swagger configuration options. See Swagger::Configuration.
+      attr_accessor :configuration
 
-      # Configure logger.  Default to use Rails
-      self.logger ||= configuration.logger || (defined?(Rails) ? Rails.logger : Logger.new(STDOUT))
+      attr_accessor :resources
 
-      # remove :// from scheme
-      configuration.scheme.sub!(/:\/\//, '')
+      # Call this method to modify defaults in your initializers.
+      #
+      # @example
+      #   Swagger.configure do |config|
+      #     config.api_key = '1234567890abcdef'     # api key authentication
+      #     config.format = 'json'                  # optional, defaults to 'json'
+      #   end
+      #
+      def configure
+        yield(configuration) if block_given?
 
-      # remove http(s):// and anything after a slash
-      configuration.host.sub!(/https?:\/\//, '')
-      configuration.host = configuration.host.split('/').first
+        # Configure logger.  Default to use Rails
+        self.logger ||= configuration.logger || (defined?(Rails) ? Rails.logger : Logger.new(STDOUT))
 
-      # Add leading and trailing slashes to base_path
-      configuration.base_path = "/#{configuration.base_path}".gsub(/\/+/, '/')
-      configuration.base_path = "" if configuration.base_path == "/"
-    end
-    
-    def authenticated?
-      Swagger.configuration.auth_token.present?
-    end
-    
-    def de_authenticate
-      Swagger.configuration.auth_token = nil
-    end
-    
-    def authenticate
-      return if Swagger.authenticated?
-      
-      if Swagger.configuration.username.blank? || Swagger.configuration.password.blank?
-        raise ClientError, "Username and password are required to authenticate."
+        # remove :// from scheme
+        configuration.scheme.sub!(/:\/\//, '')
+
+        # remove http(s):// and anything after a slash
+        configuration.host.sub!(/https?:\/\//, '')
+        configuration.host = configuration.host.split('/').first
+
+        # Add leading and trailing slashes to base_path
+        configuration.base_path = "/#{configuration.base_path}".gsub(/\/+/, '/')
+        configuration.base_path = "" if configuration.base_path == "/"
       end
-      
-      request = Swagger::Request.new(
-        :get, 
-        "account/authenticate/{username}", 
-        :params => {
-          :username => Swagger.configuration.username, 
-          :password => Swagger.configuration.password
-        }
-      )
-      
-      response_body = request.response.body
-      Swagger.configuration.auth_token = response_body['token']
+
+      def authenticated?
+        Swagger.configuration.auth_token.present?
+      end
+
+      def de_authenticate
+        Swagger.configuration.auth_token = nil
+      end
+
+      def authenticate
+        return if Swagger.authenticated?
+
+        if Swagger.configuration.username.blank? || Swagger.configuration.password.blank?
+          raise ClientError, "Username and password are required to authenticate."
+        end
+
+        request = Swagger::Request.new(
+          :get,
+          "account/authenticate/{username}",
+          :params => {
+            :username => Swagger.configuration.username,
+            :password => Swagger.configuration.password
+          }
+        )
+
+        response_body = request.response.body
+        Swagger.configuration.auth_token = response_body['token']
+      end
     end
-
-    def to_body(obj)
-      return nil if obj.nil?
-      return obj.to_body if obj.respond_to? :to_body
-      return obj.map{|x| to_body(x) } if obj.is_a? Array
-      return obj
-    end
-
   end
-  
-end
 
-class HTTPError < StandardError
-  attr_accessor :response
+  class ServerError < StandardError
+  end
 
-  def initialize(message = nil, response = nil)
-    super(message)
-    @response = response
+  class ClientError < StandardError
   end
 end
-
-class ServerError < HTTPError
-end
-
-class ClientError < HTTPError
-end
-
-end
-

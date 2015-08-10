@@ -1,6 +1,5 @@
 module Tpaga
-module Swagger
-  VERSION = "4.06.08"
+  module Swagger
+    VERSION = "0.4.2"
+  end
 end
-end
-
