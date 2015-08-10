@@ -29,7 +29,10 @@ module Tpaga
         
         # 
         :'description' => :'description',
-        
+
+        #
+        :'third_party_id' => :'thirdPartyId',
+
         # 
         :'paid' => :'paid',
         
