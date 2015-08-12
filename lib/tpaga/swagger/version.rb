@@ -1,5 +1,5 @@
 module Tpaga
   module Swagger
-    VERSION = "0.4.2.1"
+    VERSION = "0.4.2.2"
   end
 end
