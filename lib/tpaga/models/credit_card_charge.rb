@@ -55,6 +55,7 @@ module Tpaga
         :'credit_card' => :'string',
         :'installments' => :'number',
         :'order_id' => :'string',
+        :'third_party_id' => :'string',
         :'description' => :'string',
         :'paid' => :'boolean',
         :'customer' => :'string',
@@ -96,6 +97,10 @@ module Tpaga
       
       if attributes[:'orderId']
         @order_id = attributes[:'orderId']
+        end
+
+      if attributes[:'thirdPartyId']
+        @third_party_id = attributes[:'thirdPartyId']
       end
       
       if attributes[:'description']
