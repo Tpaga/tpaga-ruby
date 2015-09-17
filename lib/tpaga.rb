@@ -13,6 +13,7 @@ require 'tpaga/models/address'
 require 'tpaga/models/customer'
 require 'tpaga/models/credit_card'
 require 'tpaga/models/credit_card_create'
+require 'tpaga/models/credit_card_refund'
 require 'tpaga/models/billing_address'
 require 'tpaga/models/credit_card_charge'
 require 'tpaga/models/davi_plata'
@@ -28,6 +29,7 @@ require 'tpaga/api/customer_api'
 require 'tpaga/api/davi_plata_api'
 require 'tpaga/api/charge_api'
 require 'tpaga/api/credit_card_api'
+require 'tpaga/api/refund_api'
 
 module Tpaga
   # Initialize the default configuration
