@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.authors       = ["Sebastian Ortiz V."]
   s.email         = ["sebastian@tpaga.co"]
   s.homepage    = "https://tpaga.co"
+  s.license = 'Apache License, v2.0'
   s.summary     = %q{TPaga API Ruby Bindings powered by Swagger}
   s.description = %q{TPaga Payment Gateway API
 
@@ -22,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'json', '~> 1.4', '>= 1.4.6'
 
   s.files         = `find *`.split("\n").uniq.sort.select{|f| !f.empty? }
-  s.test_files    = `find spec/*`.split("\n")
   s.executables   = []
   s.require_paths = ["lib"]
 end
