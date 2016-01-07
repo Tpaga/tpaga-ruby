@@ -22,6 +22,7 @@ require 'tpaga/models/davi_plata_chargeback'
 require 'tpaga/models/davi_plata_verification'
 require 'tpaga/models/api_errors_item'
 require 'tpaga/models/api_error'
+require 'tpaga/models/token'
 
 # APIs
 require 'tpaga/api/chargeback_api'
@@ -30,6 +31,7 @@ require 'tpaga/api/davi_plata_api'
 require 'tpaga/api/charge_api'
 require 'tpaga/api/credit_card_api'
 require 'tpaga/api/refund_api'
+require 'tpaga/api/token_api'
 
 module Tpaga
   # Initialize the default configuration
