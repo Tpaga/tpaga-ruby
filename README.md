@@ -6,7 +6,7 @@ TPaga ruby gem provides the functionality to call the multiple services of the T
 Installation
 ---
 
-To install as a gem in your environment type:
+To install as a gem in your environment type in your console:
 
 ```sh
 gem install tpaga
@@ -36,9 +36,9 @@ If you are going to run tpaga in a rails environment add to the environment file
   config.tpaga_api_key   = 'd13fr8n7vhvkuch3lq2ds5qhjnd2pdd2'
 ```
 
-using the respective api key for your TPaga user.
+using the respective api key for your TPaga user account.
 
-Next add the the file `tpaga.rb` to the rails initializers(ex: `initializers/tpaga.rb`) with he following lines:
+Next add the the file `tpaga.rb` to the rails initializers (ex: `initializers/tpaga.rb`) with he following lines:
 
 ```ruby
 require 'tpaga'
@@ -94,7 +94,7 @@ response = Tpaga::CustomerApi.delete_customer_by_id 'customer_id'
 Managing credit cards
 ---
 
-You can add a credit card to an existing customer:
+You can add a credit card to existing customers:
 
 ```ruby
 # build the credit card object to create
@@ -111,21 +111,21 @@ credit_card = Tpaga::CreditCardApi.add_credit_card 'customer_id', credit_card_cr
 # returns a Tpaga::CreditCard object, raise error if not
 ```
 
-you can get the credit card of a customer:
+you can get the credit card of customers:
 
 ```ruby
 credit_card = Tpaga::CreditCardApi.get_credit_card_by_id 'customer_id', 'credit_card_id'
 # return a Tpaga::CreditCard object, raise error if not
 ```
 
-You can delete the credit card of a customer:
+You can delete the credit card of customers:
 
 ```ruby
 Tpaga::CreditCardApi.delete_credit_card_by_id 'customer_id', 'credit_card_id'
 # return nil if success, raise error if not
 ```
 
-You can add a credit card charge:
+You can charge a credit card:
 
 ```ruby
 # build the charge object
@@ -143,7 +143,7 @@ charge = Tpaga::CreditCardApi.add_credit_card_charge charge
 # return a Tpaga::CreditCardCharge object, raise error if not
 ```
 
-Retrieve a charge:
+Retrieve a charge by it's id:
 
 ```ruby
 charge = Tpaga::CreditCardApi.get_credit_card_charge_by_id 'charge_id'
