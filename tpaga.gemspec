@@ -4,7 +4,7 @@ require "tpaga/swagger/version"
 
 Gem::Specification.new do |s|
   s.name        = "tpaga"
-  s.date        = "2015-08-11"
+  s.date        = "2016-09-01"
   s.version     = Tpaga::Swagger::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors       = ["Sebastian Ortiz V."]
