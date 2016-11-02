@@ -74,7 +74,8 @@ module Tpaga
         :'address_city' => :'string',
         :'address_state' => :'string',
         :'address_postal_code' => :'string',
-        :'address_country' => :'string'
+        :'address_country' => :'string',
+        :'validation_charge' => :'ValidationCharge',
         
       }
     end
