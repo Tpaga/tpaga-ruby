@@ -23,6 +23,8 @@ require 'tpaga/models/davi_plata_verification'
 require 'tpaga/models/api_errors_item'
 require 'tpaga/models/api_error'
 require 'tpaga/models/token'
+require 'tpaga/models/transaction_info'
+require 'tpaga/models/validation_charge'
 
 # APIs
 require 'tpaga/api/chargeback_api'
