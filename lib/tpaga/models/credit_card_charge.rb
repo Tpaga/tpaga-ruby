@@ -62,7 +62,8 @@ module Tpaga
         :'description' => :'string',
         :'paid' => :'boolean',
         :'customer' => :'string',
-        :'payment_transaction' => :'string'
+        :'payment_transaction' => :'string',
+        :'transaction_info' => :'TransactionInfo',
         
       }
     end
