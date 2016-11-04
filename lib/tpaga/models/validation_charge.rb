@@ -1,13 +1,13 @@
 module Tpaga
   # 
   class ValidationCharge < BaseObject
-    attr_accessor :succesful, :error_code
+    attr_accessor :successful, :error_code
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
         
         # 
-        :'succesful' => :'succesful',
+        :'successful' => :'successful',
         
         # 
         :'error_code' => :'errorCode',
@@ -18,7 +18,7 @@ module Tpaga
     # attribute type
     def self.swagger_types
       {
-        :'succesful' => :'boolean',
+        :'successful' => :'boolean',
         :'error_code' => :'string',
         
       }
@@ -31,8 +31,8 @@ module Tpaga
       attributes = attributes.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
       
-      if attributes[:'succesful']
-        @authorization_code = attributes[:'succesful']
+      if attributes[:'successful']
+        @authorization_code = attributes[:'successful']
       end
       
       if attributes[:'errorCode']
