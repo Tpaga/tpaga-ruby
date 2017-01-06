@@ -1,7 +1,7 @@
 module Tpaga
   # 
   class CreditCardCharge < BaseObject
-    attr_accessor :id, :amount, :tax_amount, :currency, :credit_card, :installments, :order_id, :description, :paid, :customer, :payment_transaction, :third_party_id, :transaction_info
+    attr_accessor :id, :amount, :tax_amount, :currency, :credit_card, :installments, :order_id, :description, :paid, :customer, :payment_transaction, :third_party_id, :transaction_info, :error_code
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -43,8 +43,10 @@ module Tpaga
         :'payment_transaction' => :'paymentTransaction',
         
         # 
-        :'transaction_info' => :'transactionInfo'
+        :'transaction_info' => :'transactionInfo',
         
+        #
+        :'error_code' => :'errorCode'
       }
     end
 
@@ -64,7 +66,7 @@ module Tpaga
         :'customer' => :'string',
         :'payment_transaction' => :'string',
         :'transaction_info' => :'TransactionInfo',
-        
+        :'error_code' => :'errorCode'
       }
     end
 
@@ -125,6 +127,10 @@ module Tpaga
       
       if attributes[:'transactionInfo']
         @transaction_info = attributes[:'transactionInfo']
+      end
+      
+      if attributes[:'errorCode']
+        @error_code = attributes[:'errorCode']
       end
     end
   end
