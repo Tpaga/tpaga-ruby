@@ -1,7 +1,7 @@
 module Tpaga
   # 
   class CreditCardCharge < BaseObject
-    attr_accessor :id, :amount, :tax_amount, :currency, :credit_card, :installments, :order_id, :description, :paid, :customer, :payment_transaction, :third_party_id, :transaction_info, :error_code, :error_message
+    attr_accessor :id, :amount, :tax_amount, :net_amount, :iac_amount, :tip_amount, :rete_renta_amount, :rete_iva_amount, :rete_ica_amount, :tpaga_fee_amount, :currency, :credit_card, :installments, :order_id, :description, :paid, :customer, :payment_transaction, :third_party_id, :transaction_info, :error_code, :error_message
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -14,6 +14,27 @@ module Tpaga
         
         # 
         :'tax_amount' => :'taxAmount',
+
+        # 
+        :'net_amount' => :'netAmount',
+
+        # 
+        :'iac_amount' => :'iacAmount',
+
+        # 
+        :'tip_amount' => :'tipAmount',
+
+        # 
+        :'rete_renta_amount' => :'reteRentaAmount',
+
+        # 
+        :'rete_iva_amount' => :'reteIvaAmount',
+
+        # 
+        :'rete_ica_amount' => :'reteIcaAmount',
+
+        # 
+        :'tpaga_fee_amount' => :'tpagaFeeAmount',
         
         # 3-letter ISO code for currency.
         :'currency' => :'currency',
@@ -59,6 +80,13 @@ module Tpaga
         :'id' => :'string',
         :'amount' => :'number',
         :'tax_amount' => :'number',
+        :'net_amount' => :'number',
+        :'iac_amount' => :'number',
+        :'tip_amount' => :'number',
+        :'rete_renta_amount' => :'number',
+        :'rete_iva_amount' => :'number',
+        :'rete_ica_amount' => :'number',
+        :'tpaga_fee_amount' => :'number',
         :'currency' => :'string',
         :'credit_card' => :'string',
         :'installments' => :'number',
@@ -91,6 +119,34 @@ module Tpaga
       
       if attributes[:'taxAmount']
         @tax_amount = attributes[:'taxAmount']
+      end
+      
+      if attributes[:'netAmount']
+        @net_amount = attributes[:'netAmount']
+      end
+
+      if attributes[:'iacAmount']
+        @iac_amount = attributes[:'iacAmount']
+      end
+      
+      if attributes[:'tipAmount']
+        @tip_amount = attributes[:'tipAmount']
+      end
+
+      if attributes[:'reteRentaAmount']
+        @rete_renta_amount = attributes[:'reteRentaAmount']
+      end
+
+      if attributes[:'reteIvaAmount']
+        @rete_iva_amount = attributes[:'reteIvaAmount']
+      end
+
+      if attributes[:'reteIcaAmount']
+        @rete_ica_amount = attributes[:'reteIcaAmount']
+      end
+
+      if attributes[:'tpagaFeeAmount']
+        @tpaga_fee_amount = attributes[:'tpagaFeeAmount']
       end
       
       if attributes[:'currency']
