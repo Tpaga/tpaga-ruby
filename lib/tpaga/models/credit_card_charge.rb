@@ -1,7 +1,7 @@
 module Tpaga
   # 
   class CreditCardCharge < BaseObject
-    attr_accessor :id, :amount, :tax_amount, :net_amount, :iac_amount, :tip_amount, :rete_renta_amount, :rete_iva_amount, :rete_ica_amount, :tpaga_fee_amount, :currency, :credit_card, :installments, :order_id, :description, :paid, :customer, :payment_transaction, :third_party_id, :transaction_info, :error_code, :error_message
+    attr_accessor :id, :amount, :tax_amount, :net_amount, :iac_amount, :tip_amount, :rete_renta_amount, :rete_iva_amount, :rete_ica_amount, :tpaga_fee_amount, :currency, :credit_card, :installments, :order_id, :description, :paid, :customer, :payment_transaction, :third_party_id, :transaction_info, :error_code, :error_message, :child_merchant_id
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -71,6 +71,9 @@ module Tpaga
 
         #
         :'error_message' => :'errorMessage',
+
+        #
+        :'child_merchant_id' => :'childMerchantId',
       }
     end
 
@@ -99,6 +102,7 @@ module Tpaga
         :'transaction_info' => :'TransactionInfo',
         :'error_code' => :'string',
         :'error_message' => :'string',
+        :'child_merchant_id' => :'string',
       }
     end
 
@@ -195,6 +199,10 @@ module Tpaga
 
       if attributes[:'errorMessage']
         @error_message = attributes[:'errorMessage']
+      end
+
+      if attributes[:'childMerchantId']
+        @child_merchant_id = attributes[:'childMerchantId']
       end
     end
   end
