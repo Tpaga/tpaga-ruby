@@ -1,4 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
+*.swp
 ### Ruby template
 *.gem
 *.rbc
