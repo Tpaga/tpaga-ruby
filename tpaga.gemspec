@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 }
   s.add_runtime_dependency 'typhoeus', '~> 0.2', '>= 0.2.1'
   s.add_runtime_dependency 'addressable', '~> 2.2', '>= 2.2.4'
-  s.add_runtime_dependency 'json', '~> 1.4', '>= 1.4.6'
+  s.add_runtime_dependency 'json', '>= 1.4.6'
 
   s.files         = `find *`.split("\n").uniq.sort.select{|f| !f.empty? }
   s.executables   = []
