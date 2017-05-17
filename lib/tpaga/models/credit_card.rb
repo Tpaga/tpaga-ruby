@@ -1,7 +1,7 @@
 module Tpaga
   # 
   class CreditCard < BaseObject
-    attr_accessor :id, :bin, :type, :expiration_month, :expiration_year, :card_verification_code, :card_holder_name, :last_four, :customer, :address_line1, :address_line2, :address_city, :address_state, :address_postal_code, :address_country, :validation_charge
+    attr_accessor :id, :bin, :type, :expiration_month, :expiration_year, :card_verification_code, :card_holder_name, :last_four, :customer, :address_line1, :address_line2, :address_city, :address_state, :address_postal_code, :address_country, :validation_charge, :credit_card_checks
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -50,6 +50,9 @@ module Tpaga
         
         # 
         :'validation_charge' => :'validationCharge',
+
+        # 
+        :'credit_card_checks' => :'creditCardChecks',
         
         # 
         :'address_country' => :'addressCountry'
@@ -76,6 +79,7 @@ module Tpaga
         :'address_postal_code' => :'string',
         :'address_country' => :'string',
         :'validation_charge' => :'ValidationCharge',
+        :'credit_card_checks' => :'CreditCardCheckResult',
         
       }
     end
@@ -149,6 +153,10 @@ module Tpaga
 
       if attributes[:'validationCharge']
         @validation_charge = attributes[:'validationCharge']
+      end
+
+      if attributes[:'creditCardChecks']
+        @credit_card_checks = attributes[:'creditCardChecks']
       end
       
     end
