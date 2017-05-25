@@ -18,9 +18,9 @@ Gem::Specification.new do |s|
 
 [More information about this library] (http://tpaga.co/docs)
 }
-  s.add_runtime_dependency 'typhoeus', '~> 0.2', '>= 0.2.1'
+  s.add_runtime_dependency 'typhoeus', '<= 2.1', '>= 0.2.1'
   s.add_runtime_dependency 'addressable', '~> 2.2', '>= 2.2.4'
-  s.add_runtime_dependency 'json', '~> 1.4', '>= 1.4.6'
+  s.add_runtime_dependency 'json', '<= 2.1', '>= 1.4.6'
 
   s.files         = `find *`.split("\n").uniq.sort.select{|f| !f.empty? }
   s.executables   = []
