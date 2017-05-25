@@ -1,13 +1,15 @@
 module Tpaga
   # 
   class Token < BaseObject
-    attr_accessor :token, :used
+    attr_accessor :token, :used, :skip_legal_id_check
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
         
         # The token identification
         :'token' => :'token',
+
+        :'skip_legal_id_check' => :'skipLegalIdCheck',
         
         # If the token was already used
         :'used' => :'used'
@@ -19,7 +21,8 @@ module Tpaga
     def self.swagger_types
       {
         :'token' => :'String',
-        :'used' => :'BOOLEAN'
+        :'skip_legal_id_check' => :'BOOLEAN',
+        :'used' => :'BOOLEAN',
         
       }
     end
@@ -33,6 +36,10 @@ module Tpaga
       
       if attributes[:'token']
         @token = attributes[:'token']
+      end
+
+      if attributes[:'skipLegalIdCheck']
+        @skip_legal_id_check = attributes[:'skipLegalIdCheck']
       end
       
       if attributes[:'used']
