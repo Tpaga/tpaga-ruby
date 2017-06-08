@@ -1,3 +1,7 @@
+## 0.7.1 - 2017-06-08
+
+Added missing field in credit card model (`fingerprint`). Thanks, @vero4karu
+
 ## 0.7.0 - 2017-05-25
 
 Added support for new fields in requests to the 
