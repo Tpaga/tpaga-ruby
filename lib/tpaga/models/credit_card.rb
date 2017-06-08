@@ -1,7 +1,7 @@
 module Tpaga
   # 
   class CreditCard < BaseObject
-    attr_accessor :id, :bin, :type, :expiration_month, :expiration_year, :card_verification_code, :card_holder_name, :last_four, :customer, :address_line1, :address_line2, :address_city, :address_state, :address_postal_code, :address_country, :validation_charge, :credit_card_checks, :card_holder_legal_id_number, :card_holder_legal_id_type
+    attr_accessor :id, :bin, :type, :fingerprint, :expiration_month, :expiration_year, :card_verification_code, :card_holder_name, :last_four, :customer, :address_line1, :address_line2, :address_city, :address_state, :address_postal_code, :address_country, :validation_charge, :credit_card_checks, :card_holder_legal_id_number, :card_holder_legal_id_type
     # attribute mapping from ruby-style variable name to JSON key
     def self.attribute_map
       {
@@ -14,6 +14,9 @@ module Tpaga
         
         # 
         :'type' => :'type',
+
+        #
+        :'fingerprint' => :'fingerprint',
         
         # 
         :'expiration_month' => :'expirationMonth',
@@ -70,6 +73,7 @@ module Tpaga
         :'id' => :'string',
         :'bin' => :'string',
         :'type' => :'string',
+        :'fingerprint' => :'string',
         :'expiration_month' => :'string',
         :'expiration_year' => :'string',
         :'card_verification_code' => :'string',
@@ -107,6 +111,10 @@ module Tpaga
       
       if attributes[:'type']
         @type = attributes[:'type']
+      end
+
+      if attributes[:'fingerprint']
+        @fingerprint = attributes[:'fingerprint']
       end
       
       if attributes[:'expirationMonth']
