@@ -83,7 +83,7 @@ module Tpaga
         @phone = attributes[:'phone']
       end
 
-      if attributes[:'phone']
+      if attributes[:'legalIdNumber']
         @legal_id_number = attributes[:'legalIdNumber']
       end
 
