@@ -1,3 +1,7 @@
+## 0.7.2 - 2017-09-05
+
+Correction to Customer structure for legal id field
+
 ## 0.7.1 - 2017-06-08
 
 Added missing field in credit card model (`fingerprint`). Thanks, @vero4karu
