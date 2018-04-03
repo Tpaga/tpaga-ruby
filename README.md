@@ -1,3 +1,7 @@
+#DEPRECATED#
+
+DO NOT USE THIS PROJECT
+
 TPaga ruby
 ===
 
